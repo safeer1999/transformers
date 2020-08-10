@@ -212,6 +212,10 @@ def main():
     else:
         logger.info("Training new model from scratch")
         model = AutoModelWithLMHead.from_config(config)
+    
+    
+    special_tokens_dict = {'bos_token': '<BOS>', 'eos_token': '<EOS>', 'pad_token': '<PAD>'}
+    num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
 
     model.resize_token_embeddings(len(tokenizer))
 
