@@ -221,10 +221,10 @@ def main():
             tokenizer_kwargs = {}
 
         encoded_prompt = tokenizer.encode(
-            preprocessed_prompt_text, add_special_tokens=False, return_tensors="pt", **tokenizer_kwargs
+            preprocessed_prompt_text, add_special_tokens=True, return_tensors="pt", **tokenizer_kwargs
         )
     else:
-        encoded_prompt = tokenizer.encode(prompt_text, add_special_tokens=False, return_tensors="pt")
+        encoded_prompt = tokenizer.encode(prompt_text, add_special_tokens=True, return_tensors="pt")
     encoded_prompt = encoded_prompt.to(args.device)
 
     if encoded_prompt.size()[-1] == 0:
